@@ -1,0 +1,9 @@
+.titleDiv {
+    align-content: center;
+}
+
+.breadcrumbDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

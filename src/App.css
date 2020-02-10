@@ -1,7 +1,11 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
-
+html, body, body>div, .App {
+  height: 100%
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -11,6 +15,13 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.headerDiv {
+  height: 5%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {

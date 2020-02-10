@@ -1,0 +1,42 @@
+.damageEstPage {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.weaponInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 5% 10% 10% 10%;
+}
+
+.rawAndDmg {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.submitButton {
+  margin: auto;
+}
+
+.cardWrapper {
+  padding: 0px 0px 10px 0px;
+}
+
+.inputDiv {
+  width: 100%;
+  margin: 0px 0px 20px 0px;
+}
+
+.categoryDropdown {
+  float: left;
+  width: 70%;
+}
+.sharpnessDropdown {
+  width: 100%;
+}
+
+.mhIcon {
+  float: right;
+}
