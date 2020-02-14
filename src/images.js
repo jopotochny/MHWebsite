@@ -15,6 +15,10 @@ const weaponIcons = {
     "LB": "/icons/LB.png",
     "HB": "/icons/HB.png",
 
+};
+
+const backgroundImages = {
+    "home": "/images/greatsword_background",
 }
 
-export {weaponIcons};
+export {weaponIcons, backgroundImages};

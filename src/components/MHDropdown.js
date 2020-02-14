@@ -1,9 +1,7 @@
 import React from 'react';
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Select from "@material-ui/core/Select/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import FormControl from "@material-ui/core/FormControl/FormControl";
-import {makeStyles} from "@material-ui/core";
 import PropTypes from 'prop-types';
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 

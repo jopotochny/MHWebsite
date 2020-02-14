@@ -5,19 +5,14 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles({
-    card: {
-        minWidth: 275,
-    },
-});
 MHCard.propTypes = {
     style: PropTypes.object,
+    className: PropTypes.string
 };
 export default function MHCard(props){
-    const classes = useStyles();
     return(
-        <Card className={classes.card}style={props.style ? props.style : {}}>
-            <CardContent>
+        <Card className={props.className ? props.className : ''} style={props.style ? props.style : {}}>
+            <CardContent style={{height: '100%'}}>
                 {props.children}
             </CardContent>
         </Card>

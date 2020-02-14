@@ -1,0 +1,16 @@
+.homeCard {
+    margin: 0% 10% 0% 10%;
+    height: 60%;
+    opacity: 90%;
+}
+
+.homeDiv {
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    background-image: url("/images/azure_rathalos_background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}

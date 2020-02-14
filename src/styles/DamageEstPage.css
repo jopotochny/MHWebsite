@@ -1,7 +1,24 @@
 .damageEstPage {
+  background-color: lightgrey;
   display: flex;
   flex-direction: row;
   height: 100%;
+  background-image: url("/images/savage_deviljho_background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.dmgEstCard {
+  height: 80%;
+  margin: auto;
+  opacity: 95%;
+  width: 20%;
+}
+
+.hitzoneCard {
+  height: 80%;
+  margin: auto;
+  opacity: 95%;
+  width: 50%;
 }
 
 .weaponInfo {
@@ -33,7 +50,17 @@
   float: left;
   width: 70%;
 }
+
+.bloatRawTextField {
+  float: left;
+  width: 70%;
+}
+
 .sharpnessDropdown {
+  width: 100%;
+}
+
+.critBoostDropdown {
   width: 100%;
 }
 
