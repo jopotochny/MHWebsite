@@ -41,3 +41,30 @@
     margin-left: 5%;
     font-size: 14pt;
 }
+
+.faqNavBar {
+    position: static;
+    padding: 10px 25px 10px 25px;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #5687ff;
+}
+
+.searchDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchIcon {
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.searchBar {
+    border-radius: 7px;
+}
+
+.searchBar:focus {
+    background-color: lightgrey;
+}

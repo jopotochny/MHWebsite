@@ -1,6 +1,6 @@
 import React from 'react';
 import MHBreadcrumb from './components/MHBreadcrumb';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHome, faCalculator, faQuestionCircle} from '@fortawesome/free-solid-svg-icons';
 import './styles/Header.css';
 export default class Header extends React.Component {

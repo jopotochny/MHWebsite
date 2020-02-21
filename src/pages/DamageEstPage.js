@@ -9,6 +9,7 @@ import '../styles/DamageEstPage.css'
 import {weaponIcons} from '../images';
 import {faQuestion} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
 class DamageEstPage extends React.Component {
     constructor(props){
         super(props);
@@ -187,8 +188,5 @@ class DamageEstPage extends React.Component {
             </div>
         )
     }
-
-
-
 }
 export default DamageEstPage;
