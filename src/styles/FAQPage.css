@@ -1,12 +1,15 @@
 .faqDiv {
     background-color: lightgrey;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     height: 100%;
     background-image: url("/images/kulu-ya-ku_background.png");
     background-repeat: no-repeat;
     background-position: center;
+
+}
+.contentDiv {
+ height: 100%;
 }
 
 .articleCard {
@@ -14,7 +17,7 @@
     flex-direction: column;
     justify-content: center;
 
-    height: 80%;
+    height: 95%;
     opacity: 95%;
     margin: 0% 10% 0% 10%;
 }
@@ -50,7 +53,7 @@
     background-color: #5687ff;
 }
 
-.searchDiv {
+.navBarItems {
     display: flex;
     flex-direction: row;
 }
@@ -61,10 +64,47 @@
     margin-bottom: auto;
 }
 
+.searchBarDiv {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .searchBar {
     border-radius: 7px;
 }
 
 .searchBar:focus {
     background-color: lightgrey;
+}
+
+.randomButtonDiv {
+    margin-right: 20px;
+}
+
+.randomButton:hover {
+    outline: 2px solid white;
+}
+
+.searchResultsTable {
+    background-color: #5687ff;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchResultsRow {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 15px 10px 15px;
+}
+
+.searchResultsCell{
+    width: 45%;
+    margin: 5px 7px 5px 7px;
+    background-color: lightgrey;
+}
+
+.searchResultsCell:hover {
+    cursor: pointer;
 }

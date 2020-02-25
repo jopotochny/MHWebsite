@@ -10,6 +10,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 
+
 };
 const VisibleArticle = connect(
     mapStateToProps,

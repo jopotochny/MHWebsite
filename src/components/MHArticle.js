@@ -1,5 +1,6 @@
 import React from 'react';
 import MHCard from "./MHCard";
+import PropTypes from 'prop-types';
 export default class MHArticle extends React.Component {
     constructor(props){
         super(props)
@@ -22,4 +23,9 @@ export default class MHArticle extends React.Component {
             </MHCard>
         );
     }
+
 }
+MHArticle.propTypes = {
+    title: PropTypes.string,
+    body: PropTypes.string
+};
