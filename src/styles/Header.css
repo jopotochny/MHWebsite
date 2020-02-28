@@ -1,5 +1,7 @@
 .titleDiv {
-    align-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     background-color: #5687ff;
     color: white;
     font-size: 20pt;

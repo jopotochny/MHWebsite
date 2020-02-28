@@ -44,7 +44,7 @@ function searchReducer(state = initialSearchState, action) {
     }
 }
 
-const initialShowArticleState = true;
+const initialShowArticleState = false;
 
 function showArticleReducer(state = initialShowArticleState, action) {
     switch (action.type) {

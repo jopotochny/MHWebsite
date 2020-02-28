@@ -8,7 +8,7 @@ export default function Main(){
         <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/damage" component={DamageEstPage}/>
-            <Route path="/faq" component={FAQPage}/>
+            <Route path="/faq" render={(props) => <FAQPage {...props}/>}/>
         </Switch>
     );
 }

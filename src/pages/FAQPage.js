@@ -4,7 +4,7 @@ import MHArticle from '../components/MHArticle';
 import MHTable from '../components/MHTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
-import {getRandomArticle, searchArticles} from "../requests/articleRequests";
+import {getRandomArticle, getAllArticles} from "../requests/articleRequests";
 import { connect } from 'react-redux'
 import Button from "@material-ui/core/Button/Button";
 import {
@@ -12,16 +12,18 @@ import {
     SET_ARTICLE_DATE_CREATED,
     SET_ARTICLE_TITLE,
     SET_SEARCH_RESULTS,
-    SET_SHOW_ARTICLE
+    SET_SHOW_ARTICLE, setSearchResults
 } from "../redux/actions/actions";
 import { withStyles } from '@material-ui/core/styles';
 import {fetchSearchResults} from "../redux/actionCreators/searchArticles";
+import MHSearchResults from "../components/MHSearchResults";
 
 class FAQPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             searchTerms: "",
+            initialRender: true
         };
     }
     setCurrentArticle = (result) => {
@@ -34,7 +36,9 @@ class FAQPage extends React.Component{
         this.setState({searchTerms: e.target.value})
     };
     handleSearchSubmit = (e) => {
-        e.preventDefault();
+        if(e){
+            e.preventDefault();
+        }
         let modifiedSearchTerms = this.state.searchTerms.replace(/" "/g, "-");
         this.props.fetchSearchResults(modifiedSearchTerms);
         this.props.setShowArticle(false);
@@ -50,31 +54,64 @@ class FAQPage extends React.Component{
     handleResultClick = (index) => {
         this.setCurrentArticle(this.props.results[index])
     };
+    generateSearchResultPages = (items, itemsPerContainer) => {
+        let packedItems = [];
+        for(let i = 0; i < items.length; i += itemsPerContainer){
+            packedItems.push(<MHTable rows={items.slice(i, i + itemsPerContainer)} className="searchResultsTable"/>);
+        }
+        return packedItems;
+    };
+
+    showAllArticles = () => {
+        let result = getAllArticles();
+        result.then((response) => {
+           this.props.setSearchResults(response.data.results);
+           this.props.setShowArticle(false);
+        });
+    };
+
+    generateArticlePreview = (article, numChars) => {
+        let preview;
+        article.length < numChars ? preview = article : preview = article.substring(0, numChars + 1).concat("...");
+        return preview;
+    };
     render(){
+        const PREVIEW_LENGTH = 80;
+
         const RandomButton = withStyles({
             root: {
                 color: "white",
 
             }
         })(Button);
-
         const rows = this.props.results.length !== 0 ? this.props.results.map((result, index) => {
             // we concatenate the ISO formatted date with a Z to get it in UCT format
             let dateCreated = new Date(result['date_created'].concat("Z"));
             return {
                 row: [
                     <div className="searchResultsCell" onClick={() => (this.handleResultClick(index))}>
-                        <p>{result.title}</p>
+                        <div className="resultContainer">
+                            <p className="resultTitle">{result.title}</p>
+                        </div>
+                        <div className="resultContainer">
+                            <p className="resultPreview">{this.generateArticlePreview(result.body, PREVIEW_LENGTH)}</p>
+                        </div>
+                        <div className="resultContainer">
+                            <p className="resultDateCreated">Uploaded: {dateCreated.toString()}</p>
+                        </div>
                     </div>
-                    ,
-                    <div className="searchResultsCell" onClick={() => (this.handleResultClick(index))}>
-                        <p>Uploaded: {dateCreated.toString()}</p>
-                    </div>
+
                 ],
                 className: "searchResultsRow"
             }
         })
         : [];
+
+        const rowsPerTable = 5;
+        if(this.state.initialRender){
+            this.setState({initialRender: false})
+            this.showAllArticles();
+        }
         return (
             <div className="faqDiv">
                 <div className="faqNavBar">
@@ -96,7 +133,11 @@ class FAQPage extends React.Component{
                 <div className="contentDiv">
                     {this.props.showArticle
                         ? <MHArticle title={this.props.title} body={this.props.body}/>
-                        : <MHTable rows={rows} className="searchResultsTable"/>
+                        : <MHSearchResults
+                             className="searchResults"
+                             paginationDivClassName="searchPaginationDiv"
+                             pages={this.generateSearchResultPages(rows, rowsPerTable)}
+                        />
                     }
 
                 </div>
@@ -131,9 +172,10 @@ const mapDispatchToProps = dispatch => {
                 type: SET_ARTICLE_DATE_CREATED,
                 date
             }),
+        setSearchResults: (results) =>
+            dispatch(setSearchResults(results)),
         fetchSearchResults: (searchTerms) =>
-            dispatch(fetchSearchResults(searchTerms))
-        ,
+            dispatch(fetchSearchResults(searchTerms)),
         setShowArticle: (showArticle) =>
             dispatch({
                 type: SET_SHOW_ARTICLE,

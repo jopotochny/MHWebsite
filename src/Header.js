@@ -28,7 +28,7 @@ export default class Header extends React.Component {
         ];
         return ([
           <div className="titleDiv">
-              <p>Monster Hunter Helper</p>
+              <p className="titleParagraph">Monster Hunter Helper</p>
           </div>,
           <div className="breadcrumbDiv">
               <MHBreadcrumb links={links}/>
